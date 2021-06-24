@@ -6,6 +6,10 @@ public class PlayerScript : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public int playerHealth = 3;
+
+    public float chargeTime = 2f;
+    
+
     public float invincibleLength = 1;
     public float invincibleFlickerRate = 0.3f;
 
@@ -15,12 +19,12 @@ public class PlayerScript : MonoBehaviour
     private Vector3 userInput = Vector3.zero;
     private Rigidbody playerRb = null;
     private MeshRenderer playerRenderer = null;
-    public GameStateManager gameManager = null;
+    private GameStateManager gameManager = null;
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
         playerRenderer = GetComponent<MeshRenderer>();
-
+        gameManager = FindObjectOfType<GameStateManager>();
     }
 
     // Update is called once per frame
@@ -67,5 +71,6 @@ public class PlayerScript : MonoBehaviour
                     currentlyInvincible = true;
             }
         }
+        
     }
 }

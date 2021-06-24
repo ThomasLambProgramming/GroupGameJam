@@ -22,6 +22,27 @@ public class GameStateManager : MonoBehaviour
     public float scoreTimeMultiplier = 1.0f;
     public bool gameOver = false;
     private string highScorePath = "";
+
+    public Wall topWall = null;
+    public Wall bottomWall = null;
+    public Wall leftWall = null;
+    public Wall rightWall = null;
+
+
+    public bool testMove = false;
+    private bool horizontal = false;
+    public void FlipWallAxis()
+    {
+        horizontal = !horizontal;
+
+        topWall.StartMove();
+        bottomWall.StartMove();
+        leftWall.StartMove();
+        rightWall.StartMove();
+    }
+    //Gonna be honest i didnt know you could => a variable for a return
+    public bool isHorizontal() => horizontal;
+
     void Start()
     {
         highScorePath = Application.dataPath + "Highscores.json";
@@ -30,30 +51,40 @@ public class GameStateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (testMove)
+        {
+            testMove = false;
+            FlipWallAxis();
+        }
         if (gameOver)
         {
-            HighScores scores = ReadHighScore();
-            //if (scores == null)
-                
-            for (int i = 0; i < scores.topPlayers.Length; i++)
-            {
-                //if its not beating rank 10 no need to cycle
-                if (playerScore < scores.topPlayers[i].playerScore && i == 0)
-                    break;
-
-                if (playerScore < scores.topPlayers[i].playerScore)
-                {
-
-                }
-                else if (i == scores.topPlayers.Length)
-                {
-
-                }
-
-            }
+            ScoreCheck();
         }
         else
             playerScore += Time.deltaTime * scoreTimeMultiplier;
+    }
+
+    private void ScoreCheck()
+    {
+        HighScores scores = ReadHighScore();
+        if (scores != null)
+        {
+            for (int i = 0; i < scores.topPlayers.Length; i++)
+            {
+                //if the players score is lower than that rank
+                if (playerScore < scores.topPlayers[i].playerScore)
+                {
+                    CyclePlaces(i, scores);
+                    break;
+                }
+                //else the player has the highest score
+                else if (i == scores.topPlayers.Length - 1)
+                {
+                    CyclePlaces(i, scores);
+                    break;
+                }
+            }
+        }
     }
 
     private HighScores ReadHighScore()
@@ -67,6 +98,37 @@ public class GameStateManager : MonoBehaviour
             return scores;
         }
         return null;
+    }
+    private HighScores CyclePlaces(int index, HighScores scores)
+    {
+        if (index != 0)
+        {
+            HighScores newScores = new HighScores();
+
+            for (int i = 0; i < newScores.topPlayers.Length; i++)
+            {
+                //since we are replacing at least one then we can remove the first
+                if (i == 0)
+                    continue;
+
+                if (i < index)
+                {
+                    newScores.topPlayers[i - 1] = scores.topPlayers[i];
+                }
+                else if (i == index)
+                {
+                    newScores.topPlayers[i].playerScore = playerScore;
+                    
+                    //add the name part in a ui or something to add to this later
+                }
+                else if (i > index)
+                {
+                    newScores.topPlayers[i] = scores.topPlayers[i];
+                }
+            }
+        }
+
+        return scores;
     }
 
     public void PlayerDead()
