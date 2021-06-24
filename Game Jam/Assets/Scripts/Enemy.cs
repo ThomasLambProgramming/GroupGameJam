@@ -17,4 +17,12 @@ public class Enemy : MonoBehaviour
     {
         transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("Wall"))
+        {
+            ContactPoint contactPoint = collision.GetContact(0);
+            moveDirection = Vector3.Reflect(moveDirection, contactPoint.normal);
+        }
+    }
 }
