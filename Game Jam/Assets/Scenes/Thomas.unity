@@ -542,8 +542,15 @@ MonoBehaviour:
   enemyPrefab: {fileID: 2289743904821114674, guid: 96cc712920b3c3642b27bde0842200bc, type: 3}
   enemyMoveSpeed: 10
   enemySpawnSpeed: 0.1
-  minSpawnLocation: {x: -4, y: 0, z: -4}
-  maxSpawnLocation: {x: 4, y: 0, z: 4}
+  ySpawnHeight: 0.15
+  minMoveLocation: {x: -2, y: 0, z: -2}
+  maxMoveLocation: {x: 2, y: 0, z: 2}
+  xSpawnPosition: 4.5
+  zSpawnPosition: 4.5
+  minXSpawn: -4
+  maxXSpawn: 4
+  minZSpawn: -4
+  maxZSpawn: 4
 --- !u!4 &2046714802
 Transform:
   m_ObjectHideFlags: 0
