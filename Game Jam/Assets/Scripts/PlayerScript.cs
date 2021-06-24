@@ -8,11 +8,12 @@ public class PlayerScript : MonoBehaviour
     public int playerHealth = 3;
 
     public float chargeTime = 2f;
-    
+
+    public ParticleSystem playerHitParticle = null;
 
     public float invincibleLength = 1;
     public float invincibleFlickerRate = 0.3f;
-
+    
     private float flickerTimer = 0;
     private float invincibleTimer = 0;
     private bool currentlyInvincible = false;
@@ -66,7 +67,7 @@ public class PlayerScript : MonoBehaviour
             if (!currentlyInvincible)
             {
                 playerHealth--;
-
+                //playerHitParticle.Play();
                 if (playerHealth > 0)
                     currentlyInvincible = true;
             }

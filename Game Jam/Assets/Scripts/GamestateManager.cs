@@ -27,14 +27,14 @@ public class GameStateManager : MonoBehaviour
     public Wall bottomWall = null;
     public Wall leftWall = null;
     public Wall rightWall = null;
-
+    public AudioSource wallMovementAudio;
 
     public bool testMove = false;
     private bool horizontal = false;
     public void FlipWallAxis()
     {
         horizontal = !horizontal;
-
+        //wallMovementAudio.Play();
         topWall.StartMove();
         bottomWall.StartMove();
         leftWall.StartMove();
