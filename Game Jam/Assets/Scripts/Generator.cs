@@ -15,8 +15,8 @@ public class Generator : MonoBehaviour
     private float timerForStop = 0;
     public Vector3 middlePointOfVertical = Vector3.zero;
     public Vector3 middlePointOfHorizontal = Vector3.zero;
-    public ParticleSystem playerPressedParticle = null;
-    public ParticleSystem enemyGeneratorDeath = null;
+    //public ParticleSystem playerPressedParticle = null;
+    //public ParticleSystem enemyGeneratorDeath = null;
     public void Start()
     {
         gameManager = FindObjectOfType<GameStateManager>();
@@ -58,7 +58,7 @@ public class Generator : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //if (other.gameObject.GetComponent<PlayerScript>().ischarged)
-            playerPressedParticle.Play();
+            //playerPressedParticle.Play();
             isOn = true;
         }
     }

@@ -12,8 +12,10 @@ public class Wall : MonoBehaviour
     public float moveSpeed = 5f;
     public float amountMoved = 0;
     private bool move = false;
+    private Rigidbody wallRb = null;
     void Start()
     {
+        
         startingPos = transform.position;
         moveAmount = Vector3.Distance(targetPosition, startingPos);
     }
