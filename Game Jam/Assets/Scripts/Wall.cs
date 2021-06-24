@@ -5,13 +5,13 @@ using UnityEngine;
 public class Wall : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Vector3 startingPos = Vector3.zero;
+    private Vector3 startingPos = Vector3.zero;
     public Vector3 targetPosition = Vector3.zero;
-    public Vector3 moveDirection = Vector3.zero;
-    public float moveAmount = 2.5f;
+    private Vector3 moveDirection = Vector3.zero;
+    private float moveAmount = 2.5f;
     public float moveSpeed = 5f;
     public float amountMoved = 0;
-    public bool move = false;
+    private bool move = false;
     void Start()
     {
         startingPos = transform.position;
@@ -46,9 +46,8 @@ public class Wall : MonoBehaviour
     {
         move = true;
     }
-    public void SetMoveData(float a_moveAmount, float a_moveSpeed, Vector3 a_targetPosition)
+    public void SetMoveData(float a_moveSpeed, Vector3 a_targetPosition)
     {
-        moveAmount = a_moveAmount;
         moveSpeed = a_moveSpeed;
         //set this so the target is always the same height so it doesnt move
         targetPosition = a_targetPosition;
