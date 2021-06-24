@@ -8,6 +8,7 @@ public class KillBox : MonoBehaviour
     {
         if (collision.transform.CompareTag("Enemy"))
         {
+            Debug.Log("DESTROYED BULLET");
             Destroy(collision.gameObject);
         }
     }

@@ -6,23 +6,29 @@ public class Enemy : MonoBehaviour
 {
     public Vector3 moveDirection = Vector3.zero;
     public float moveSpeed = 10f;
+    private Rigidbody enemyRb = null;
     // Start is called before the first frame update
     void Start()
     {
-        
+        enemyRb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+        enemyRb.velocity = moveDirection * moveSpeed;
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("Wall"))
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject, 0.1f);
+        }
+        else
         {
             ContactPoint contactPoint = collision.GetContact(0);
             moveDirection = Vector3.Reflect(moveDirection, contactPoint.normal);
         }
+        
     }
 }

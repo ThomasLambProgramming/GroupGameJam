@@ -8,6 +8,7 @@ public class Switch : MonoBehaviour
     public float cooldown = 1f;
     private float cooldownTimer = 0;
     private bool enableCoolDown = false;
+    public ParticleSystem playerPressed = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +33,7 @@ public class Switch : MonoBehaviour
         {
             if (!enableCoolDown)
             {
+                //playerPressed.Play();
                 gameManager.FlipWallAxis();
                 enableCoolDown = true;
             }
