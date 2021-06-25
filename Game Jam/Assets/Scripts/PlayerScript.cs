@@ -7,7 +7,10 @@ public class PlayerScript : MonoBehaviour
     public float moveSpeed = 5f;
     public int playerHealth = 3;
 
-    public float chargeTime = 2f;
+    public float chargeNeeded = 16f;
+    public float chargePerSecond = 2f;
+    private float chargeAmount = 0;
+    private bool isCharged = false;
 
     public ParticleSystem playerHitParticle = null;
 
@@ -20,14 +23,21 @@ public class PlayerScript : MonoBehaviour
     private Vector3 userInput = Vector3.zero;
     private Rigidbody playerRb = null;
     private MeshRenderer playerRenderer = null;
-    private GameStateManager gameManager = null;
+    private GamestateManager gameManager = null;
+    private AudioSource generatorSound = null;
     void Start()
     {
+        generatorSound = GetComponent<AudioSource>();
         playerRb = GetComponent<Rigidbody>();
         playerRenderer = GetComponent<MeshRenderer>();
-        gameManager = FindObjectOfType<GameStateManager>();
+        gameManager = FindObjectOfType<GamestateManager>();
     }
-
+    public bool PlayerCharged() => chargeAmount > chargeNeeded ? true : false;
+    public void ChargeUsed()
+    {
+        isCharged = false;
+        chargeAmount = 0;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -55,6 +65,22 @@ public class PlayerScript : MonoBehaviour
             }
         }
         userInput = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        if (userInput.sqrMagnitude > 0.5f && !isCharged)
+        {
+            if (chargeAmount < chargeNeeded)
+                chargeAmount += chargePerSecond * Time.deltaTime;
+            else
+            {
+                IsCharged();
+            }
+        }
+    }
+    private void IsCharged()
+    {
+        generatorSound.Play();
+        isCharged = true;
+        //play sound
+        //change light thing
     }
     private void FixedUpdate()
     {

@@ -6,7 +6,7 @@ public class Generator : MonoBehaviour
 {
     //since the generator will kill half of the map (depending on the sides)
     //all we need to know is if its horizontal or vertical
-    private GameStateManager gameManager = null;
+    private GamestateManager gameManager = null;
     public float heightOfHalf = 4f;
     public float widthOfHalf = 4f;
 
@@ -17,9 +17,22 @@ public class Generator : MonoBehaviour
     public Vector3 middlePointOfHorizontal = Vector3.zero;
     //public ParticleSystem playerPressedParticle = null;
     //public ParticleSystem enemyGeneratorDeath = null;
+    private PlayerScript player = null;
+    private EnemySpawner spawner = null;
     public void Start()
     {
-        gameManager = FindObjectOfType<GameStateManager>();
+        player = FindObjectOfType<PlayerScript>();
+        spawner = FindObjectOfType<EnemySpawner>();
+        gameManager = FindObjectOfType<GamestateManager>();
+    }
+    public void SwitchUsed()
+    {
+        if (isOn)
+        {
+            isOn = false;
+            timerForStop = 0;
+            spawner.GeneratorOff();
+        }
     }
     public void Update()
     {
@@ -30,6 +43,7 @@ public class Generator : MonoBehaviour
             {
                 isOn = false;
                 timerForStop = 0;
+                spawner.GeneratorOff();
             }
             Collider[] colliders;
             if (gameManager.isHorizontal())
@@ -57,9 +71,13 @@ public class Generator : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            //if (other.gameObject.GetComponent<PlayerScript>().ischarged)
-            //playerPressedParticle.Play();
-            isOn = true;
+            if (player.PlayerCharged())
+            {
+                //playerPressedParticle.Play();
+                isOn = true;
+                spawner.GeneratorOn();
+                player.ChargeUsed();
+            }
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class GameStateManager : MonoBehaviour
+public class GamestateManager : MonoBehaviour
 {
     private class HighScoreEntry
     {
@@ -30,7 +30,8 @@ public class GameStateManager : MonoBehaviour
     public AudioSource wallMovementAudio;
 
     public bool testMove = false;
-    private bool horizontal = false;
+    private bool horizontal = true;
+    
     public void FlipWallAxis()
     {
         horizontal = !horizontal;
@@ -46,6 +47,7 @@ public class GameStateManager : MonoBehaviour
     void Start()
     {
         highScorePath = Application.dataPath + "Highscores.json";
+        
     }
 
     // Update is called once per frame

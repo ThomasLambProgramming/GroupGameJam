@@ -25,9 +25,15 @@ public class EnemySpawner : MonoBehaviour
 
     private float spawnTimer = 0;
 
-
+    bool generatorOn = false;
+    public void GeneratorOn() => generatorOn = true;
+    public void GeneratorOff() => generatorOn = false;
     void Update()
     {
+        //we dont want to spawn while the generator is online
+        if (generatorOn)
+            return;
+
         spawnTimer += Time.deltaTime;
         if (spawnTimer > enemySpawnSpeed)
         {
@@ -71,12 +77,14 @@ public class EnemySpawner : MonoBehaviour
                 0, 
                 Random.Range(minMoveLocation.z, maxMoveLocation.x));
             Vector3 enemyPosition = tempEnemy.transform.position;
-            
+            tempEnemy.moveSpeed = enemyMoveSpeed;
             //set to 0 so its only moving along the x and z axis as it is top down
             enemyPosition.y = 0;
 
             tempEnemy.moveDirection = (direction - enemyPosition).normalized;
+            StartCoroutine(tempEnemy.TurnOnCollider());
             
         }
     }
+    
 }

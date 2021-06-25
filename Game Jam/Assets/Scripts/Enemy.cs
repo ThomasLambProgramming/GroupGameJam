@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     public Vector3 moveDirection = Vector3.zero;
     public float moveSpeed = 10f;
     private Rigidbody enemyRb = null;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -30,5 +31,10 @@ public class Enemy : MonoBehaviour
             moveDirection = Vector3.Reflect(moveDirection, contactPoint.normal);
         }
         
+    }
+    public IEnumerator TurnOnCollider()
+    {
+        yield return new WaitForSeconds(0.3f);
+        GetComponent<SphereCollider>().enabled = true;
     }
 }
