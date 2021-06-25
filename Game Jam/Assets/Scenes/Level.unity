@@ -1903,7 +1903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e46a9ae78b3ece4596e50fc4deda41a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 15
+  moveSpeed: 14
   playerHealth: 3
   chargeNeeded: 10
   chargePerSecond: 2
@@ -2299,6 +2299,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2233952844133684744, guid: 1f2a8090a63400a498462ca5177223e5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3644707244760425900, guid: 1f2a8090a63400a498462ca5177223e5, type: 3}
       propertyPath: m_Name
       value: Generator (1)
