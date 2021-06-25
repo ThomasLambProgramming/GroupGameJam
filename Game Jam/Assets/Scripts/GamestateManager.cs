@@ -74,6 +74,15 @@ public class GamestateManager : MonoBehaviour
     private void ScoreCheck()
     {
         HighScore scores = ReadHighScore();
+        if (scores == null)
+        {
+            scores = new HighScore();
+            scores.score = playerScore;
+            StreamWriter stream = new StreamWriter(Application.dataPath + "Highscores.json");
+            string data = JsonUtility.ToJson(scores, true);
+            stream.Write(data);
+            stream.Close();
+        }
         if (playerScore > scores.score)
         {
             scores.score = playerScore;
