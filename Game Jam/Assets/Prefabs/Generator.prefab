@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1405860635577973364}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.0009999912, y: 0.22280002, z: 0}
+  m_LocalPosition: {x: 0.0009999912, y: 353.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4170132324036165398}
@@ -104,8 +104,7 @@ GameObject:
   - component: {fileID: 1040492954873213107}
   - component: {fileID: 2996131379450954873}
   - component: {fileID: 3644707244760425903}
-  - component: {fileID: 3644707244760425902}
-  - component: {fileID: 3644707244760425901}
+  - component: {fileID: 7986839411615712349}
   m_Layer: 8
   m_Name: Generator
   m_TagString: Untagged
@@ -122,7 +121,7 @@ Transform:
   m_GameObject: {fileID: 3644707244760425900}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 12.53, y: 0.0000009536743, z: -3.04}
-  m_LocalScale: {x: 30, y: 30, z: 30}
+  m_LocalScale: {x: 0.015, y: 0.015, z: 0.015}
   m_Children:
   - {fileID: 2877325544791409018}
   m_Father: {fileID: 0}
@@ -135,7 +134,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3644707244760425900}
-  m_Mesh: {fileID: -8843983079382102032, guid: 4b09f07e1d235f940aa28e9df8a9bd16, type: 3}
+  m_Mesh: {fileID: -7067676551736825441, guid: 4b09f07e1d235f940aa28e9df8a9bd16, type: 3}
 --- !u!23 &2996131379450954873
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -194,21 +193,9 @@ MonoBehaviour:
   onTimer: 2
   middlePointOfVertical: {x: 7.5, y: 0, z: 0}
   middlePointOfHorizontal: {x: 0, y: 0, z: -7.5}
+  explode: {fileID: 8300000, guid: 97dce3bcd29da3f468e9fdb469e3aa11, type: 3}
   enemyExplosion: {fileID: 6455434158754906558, guid: dc00db8f443ad49419b3cfaee495f2ab, type: 3}
---- !u!65 &3644707244760425902
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3644707244760425900}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.07, y: 0.055821113, z: 0.07}
-  m_Center: {x: 0, y: 0.027910557, z: 0}
---- !u!65 &3644707244760425901
+--- !u!65 &7986839411615712349
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -219,5 +206,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.039527297, y: 0.055821113, z: 0.039527297}
-  m_Center: {x: 0, y: 0.027910557, z: 0}
+  m_Size: {x: 119.96002, y: 169.41058, z: 119.96008}
+  m_Center: {x: -0.000030517578, y: 84.70529, z: 0}

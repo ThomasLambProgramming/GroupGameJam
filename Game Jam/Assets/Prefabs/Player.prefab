@@ -42,7 +42,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Radius: 2.8
+  m_Radius: 2.7
   m_Center: {x: 0, y: 2.0108469, z: 0.07}
 --- !u!1 &683505579455584102
 GameObject:
@@ -175,12 +175,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e46a9ae78b3ece4596e50fc4deda41a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 15
   playerHealth: 3
-  chargeNeeded: 4
+  chargeNeeded: 8
   chargePerSecond: 2
   playerHitParticle: {fileID: 0}
-  invincibleLength: 1
+  hitSound: {fileID: 8300000, guid: d3b91cab1ad952848b35ea00fa861600, type: 3}
+  invincibleLength: 1.5
   invincibleFlickerRate: 0.1
   shieldSpinSpeed: 80
   BlueShield: {fileID: 2287356069513121039}
@@ -312,7 +313,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5366905113187299303, guid: 86591cfd7c21aca4e82f4804f9c35829, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 5366905113187299303, guid: 86591cfd7c21aca4e82f4804f9c35829, type: 3}
       propertyPath: m_LocalPosition.z
@@ -399,7 +400,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5932673945861727794, guid: b92d9053e5d7aac479f2e39161b204f6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 5932673945861727794, guid: b92d9053e5d7aac479f2e39161b204f6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -478,7 +479,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 949148959997900228, guid: 1fda027bb55662646830ab544a988f03, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 949148959997900228, guid: 1fda027bb55662646830ab544a988f03, type: 3}
       propertyPath: m_LocalPosition.z
