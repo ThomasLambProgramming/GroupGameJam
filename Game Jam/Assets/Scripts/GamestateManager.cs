@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class GamestateManager : MonoBehaviour
 {
@@ -60,6 +61,7 @@ public class GamestateManager : MonoBehaviour
         }
         if (gameOver)
         {
+            SceneManager.LoadScene(0);
             ScoreCheck();
         }
         else
