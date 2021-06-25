@@ -2309,11 +2309,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3644707244760425903, guid: 1f2a8090a63400a498462ca5177223e5, type: 3}
       propertyPath: middlePointOfVertical.x
-      value: 7.5
+      value: -7.5
       objectReference: {fileID: 0}
     - target: {fileID: 3644707244760425903, guid: 1f2a8090a63400a498462ca5177223e5, type: 3}
       propertyPath: middlePointOfHorizontal.z
-      value: -7.5
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 4170132324036165398, guid: 1f2a8090a63400a498462ca5177223e5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2991,6 +2991,14 @@ PrefabInstance:
     - target: {fileID: 3644707244760425900, guid: 1f2a8090a63400a498462ca5177223e5, type: 3}
       propertyPath: m_Name
       value: Generator
+      objectReference: {fileID: 0}
+    - target: {fileID: 3644707244760425903, guid: 1f2a8090a63400a498462ca5177223e5, type: 3}
+      propertyPath: middlePointOfHorizontal.z
+      value: -7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3644707244760425903, guid: 1f2a8090a63400a498462ca5177223e5, type: 3}
+      propertyPath: middlePointOfVertical.x
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 4170132324036165398, guid: 1f2a8090a63400a498462ca5177223e5, type: 3}
       propertyPath: m_LocalPosition.x
