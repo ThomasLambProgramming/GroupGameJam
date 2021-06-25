@@ -20,7 +20,7 @@ public class Generator : MonoBehaviour
     private PlayerScript player = null;
     private EnemySpawner spawner = null;
     private Light chargeLight = null;
-
+    public AudioClip explode = null;
     [SerializeField] GameObject enemyExplosion = null;
     public void Start()
     {
@@ -93,6 +93,7 @@ public class Generator : MonoBehaviour
                 spawner.GeneratorOn();
                 player.ChargeUsed();
                 gameManager.LightsOff();
+                AudioSource.PlayClipAtPoint(explode, Vector3.zero);
             }
         }
     }

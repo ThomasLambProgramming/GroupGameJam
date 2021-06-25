@@ -11,7 +11,7 @@ public class Switch : MonoBehaviour
     public ParticleSystem playerPressed = null;
     private Generator generator1 = null;
     private Generator generator2 = null;
-
+    public AudioClip flickSound = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +44,7 @@ public class Switch : MonoBehaviour
                 //playerPressed.Play();
                 gameManager.FlipWallAxis();
                 enableCoolDown = true;
+                AudioSource.PlayClipAtPoint(flickSound, Vector3.zero);
             }
         }
     }

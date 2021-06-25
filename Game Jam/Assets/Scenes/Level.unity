@@ -717,6 +717,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 1
   playerPressed: {fileID: 0}
+  flickSound: {fileID: 8300000, guid: 4eb17c79a0d09014882d2f505d1a7d9e, type: 3}
 --- !u!65 &430872262
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -827,6 +828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 1
   playerPressed: {fileID: 0}
+  flickSound: {fileID: 8300000, guid: 4eb17c79a0d09014882d2f505d1a7d9e, type: 3}
 --- !u!65 &432332650
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1315,8 +1317,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -305.5, y: 183}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -244.3, y: 183}
+  m_SizeDelta: {x: 300, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &770130208
 MonoBehaviour:
@@ -1394,6 +1396,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 1
   playerPressed: {fileID: 0}
+  flickSound: {fileID: 8300000, guid: 4eb17c79a0d09014882d2f505d1a7d9e, type: 3}
 --- !u!65 &807735453
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2155,6 +2158,9 @@ MonoBehaviour:
   rightWall: {fileID: 1626578635}
   wallMovementAudio: {fileID: 0}
   testMove: 0
+  audioSources:
+  - {fileID: 8300000, guid: 4effdd97578cba3498b0c2bed537e5b4, type: 3}
+  - {fileID: 8300000, guid: bda25e9b4ae93a54ab805c3de397a57d, type: 3}
   textObject: {fileID: 770130206}
 --- !u!1 &1626578634
 GameObject:
@@ -2519,6 +2525,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Generator (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3644707244760425903, guid: 1f2a8090a63400a498462ca5177223e5, type: 3}
+      propertyPath: explode
+      value: 
+      objectReference: {fileID: 8300000, guid: 97dce3bcd29da3f468e9fdb469e3aa11, type: 3}
     - target: {fileID: 4170132324036165398, guid: 1f2a8090a63400a498462ca5177223e5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.36
@@ -2903,7 +2913,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 159767941301325276, guid: 607057cc19b53e74aa3ae63646facf41, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.915
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 159767941301325276, guid: 607057cc19b53e74aa3ae63646facf41, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2911,7 +2921,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 159767941301325276, guid: 607057cc19b53e74aa3ae63646facf41, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.079
+      value: -10.2
       objectReference: {fileID: 0}
     - target: {fileID: 159767941301325276, guid: 607057cc19b53e74aa3ae63646facf41, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2969,6 +2979,10 @@ PrefabInstance:
       propertyPath: chargeNeeded
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 413527860360227381, guid: 607057cc19b53e74aa3ae63646facf41, type: 3}
+      propertyPath: hitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: d3b91cab1ad952848b35ea00fa861600, type: 3}
     - target: {fileID: 617319250925307277, guid: 607057cc19b53e74aa3ae63646facf41, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.7
@@ -3035,6 +3049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 1
   playerPressed: {fileID: 0}
+  flickSound: {fileID: 8300000, guid: 4eb17c79a0d09014882d2f505d1a7d9e, type: 3}
 --- !u!65 &919132148193746887
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3124,6 +3139,10 @@ PrefabInstance:
       propertyPath: enemyExplosion
       value: 
       objectReference: {fileID: 6455434158754906558, guid: dc00db8f443ad49419b3cfaee495f2ab, type: 3}
+    - target: {fileID: 3644707244760425903, guid: 1f2a8090a63400a498462ca5177223e5, type: 3}
+      propertyPath: explode
+      value: 
+      objectReference: {fileID: 8300000, guid: 97dce3bcd29da3f468e9fdb469e3aa11, type: 3}
     - target: {fileID: 4170132324036165398, guid: 1f2a8090a63400a498462ca5177223e5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.53

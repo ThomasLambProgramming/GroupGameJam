@@ -13,6 +13,7 @@ public class PlayerScript : MonoBehaviour
     private bool isCharged = false;
 
     public ParticleSystem playerHitParticle = null;
+    public AudioClip hitSound = null;
 
     public float invincibleLength = 1;
     public float invincibleFlickerRate = 0.3f;
@@ -112,6 +113,7 @@ public class PlayerScript : MonoBehaviour
         {
             if (!currentlyInvincible)
             {
+                AudioSource.PlayClipAtPoint(hitSound, transform.position);
                 invincibleCollider.enabled = true;
                 playerHealth--;
                 if (playerHealth == 2)

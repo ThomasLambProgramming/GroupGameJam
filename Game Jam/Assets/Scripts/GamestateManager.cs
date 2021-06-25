@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class GamestateManager : MonoBehaviour
 {
-    
     public class HighScore
     {
         public float score = 0;
@@ -28,11 +27,13 @@ public class GamestateManager : MonoBehaviour
 
     private Generator gen1 = null;
     private Generator gen2 = null;
+    public AudioClip[] audioSources;
 
     public GameObject textObject = null;
     private Text scoreText = null;
     public void FlipWallAxis()
     {
+        AudioSource.PlayClipAtPoint(audioSources[1], Vector3.zero);
         horizontal = !horizontal;
         //wallMovementAudio.Play();
         topWall.StartMove();
@@ -49,6 +50,7 @@ public class GamestateManager : MonoBehaviour
     }
     void Start()
     {
+        AudioSource.PlayClipAtPoint(audioSources[0], Vector3.zero);
         scoreText = textObject.GetComponent<Text>();
         highScorePath = Application.dataPath + "Highscores.json";
         Generator[] gens = FindObjectsOfType<Generator>();
