@@ -19,8 +19,10 @@ public class Generator : MonoBehaviour
     //public ParticleSystem enemyGeneratorDeath = null;
     private PlayerScript player = null;
     private EnemySpawner spawner = null;
+    private Light chargeLight = null;
     public void Start()
     {
+        chargeLight = GetComponentInChildren<Light>();
         player = FindObjectOfType<PlayerScript>();
         spawner = FindObjectOfType<EnemySpawner>();
         gameManager = FindObjectOfType<GamestateManager>();
@@ -36,6 +38,10 @@ public class Generator : MonoBehaviour
     }
     public void Update()
     {
+        if (player.PlayerCharged())
+        {
+            chargeLight.enabled = true;
+        }
         if (isOn)
         {
             timerForStop += Time.deltaTime;
@@ -77,6 +83,7 @@ public class Generator : MonoBehaviour
                 isOn = true;
                 spawner.GeneratorOn();
                 player.ChargeUsed();
+                chargeLight.enabled = false;
             }
         }
     }

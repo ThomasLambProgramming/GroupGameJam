@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
         else
         {
             ContactPoint contactPoint = collision.GetContact(0);
-            moveDirection = Vector3.Reflect(moveDirection, contactPoint.normal);
+            moveDirection = Vector3.Reflect(moveDirection, contactPoint.normal).normalized;
         }
         
     }
