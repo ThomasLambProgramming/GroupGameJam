@@ -1908,8 +1908,8 @@ MonoBehaviour:
   chargeNeeded: 10
   chargePerSecond: 2
   playerHitParticle: {fileID: 0}
-  invincibleLength: 1
-  invincibleFlickerRate: 0.3
+  invincibleLength: 1.2
+  invincibleFlickerRate: 0.25
 --- !u!54 &1620003628
 Rigidbody:
   m_ObjectHideFlags: 0
