@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &686769951
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 686769952}
+  - component: {fileID: 686769953}
+  m_Layer: 12
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &686769952
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686769951}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 159767941301325276}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &686769953
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686769951}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 2.8
+  m_Center: {x: 0, y: 2.0108469, z: 0.07}
 --- !u!1 &683505579455584102
 GameObject:
   m_ObjectHideFlags: 0
@@ -31,11 +75,12 @@ Transform:
   m_GameObject: {fileID: 683505579455584102}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.915, y: 0, z: -4.079}
-  m_LocalScale: {x: 0.7426447, y: 0.7426447, z: 0.7426447}
+  m_LocalScale: {x: 0.5254731, y: 0.5254731, z: 0.5254731}
   m_Children:
   - {fileID: 617319250925307277}
   - {fileID: 5748342062542552328}
   - {fileID: 6334368816439465729}
+  - {fileID: 686769952}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -141,6 +186,7 @@ MonoBehaviour:
   BlueShield: {fileID: 2287356069513121039}
   OrangeShield: {fileID: 3373187243307916785}
   RedShield: {fileID: 4067170979479783}
+  invincibleStopper: {fileID: 686769951}
 --- !u!82 &683505579455584103
 AudioSource:
   m_ObjectHideFlags: 0

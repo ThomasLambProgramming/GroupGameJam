@@ -6,17 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class GamestateManager : MonoBehaviour
 {
-    private class HighScoreEntry
+    
+    public class HighScore
     {
-        //we put the score to negative one as it will be an impossible score to reach
-        //so we can use it for debugging purposes
-        public float playerScore = -1;
-        public string playerName = "";
-    }
-    private class HighScores
-    {
-        //only keep the top ten players
-        public HighScoreEntry[] topPlayers = new HighScoreEntry[10];
+        public float score = 0;
     }
     public float playerScore = 0;
     //What do you want the multiple to be per second eg 1 score per second or 1000 per second
@@ -80,69 +73,28 @@ public class GamestateManager : MonoBehaviour
 
     private void ScoreCheck()
     {
-        HighScores scores = ReadHighScore();
-        if (scores != null)
+        HighScore scores = ReadHighScore();
+        if (playerScore > scores.score)
         {
-            for (int i = 0; i < scores.topPlayers.Length; i++)
-            {
-                //if the players score is lower than that rank
-                if (playerScore < scores.topPlayers[i].playerScore)
-                {
-                    CyclePlaces(i, scores);
-                    break;
-                }
-                //else the player has the highest score
-                else if (i == scores.topPlayers.Length - 1)
-                {
-                    CyclePlaces(i, scores);
-                    break;
-                }
-            }
+            scores.score = playerScore;
+            StreamWriter stream = new StreamWriter(Application.dataPath + "Highscores.json");
+            string data = JsonUtility.ToJson(scores, true);
+            stream.Write(data);
+            stream.Close();
         }
     }
 
-    private HighScores ReadHighScore()
+    public static HighScore ReadHighScore()
     {
-        if (File.Exists(highScorePath))
+        if (File.Exists(Application.dataPath + "Highscores.json"))
         {
-            StreamReader stream = new StreamReader(highScorePath);
+            StreamReader stream = new StreamReader(Application.dataPath + "Highscores.json");
             string jsonData = stream.ReadToEnd();
-            HighScores scores = JsonUtility.FromJson<HighScores>(jsonData);
+            HighScore scores = JsonUtility.FromJson<HighScore>(jsonData);
             stream.Close();
             return scores;
         }
         return null;
-    }
-    private HighScores CyclePlaces(int index, HighScores scores)
-    {
-        if (index != 0)
-        {
-            HighScores newScores = new HighScores();
-
-            for (int i = 0; i < newScores.topPlayers.Length; i++)
-            {
-                //since we are replacing at least one then we can remove the first
-                if (i == 0)
-                    continue;
-
-                if (i < index)
-                {
-                    newScores.topPlayers[i - 1] = scores.topPlayers[i];
-                }
-                else if (i == index)
-                {
-                    newScores.topPlayers[i].playerScore = playerScore;
-                    
-                    //add the name part in a ui or something to add to this later
-                }
-                else if (i > index)
-                {
-                    newScores.topPlayers[i] = scores.topPlayers[i];
-                }
-            }
-        }
-
-        return scores;
     }
 
     public void PlayerDead()

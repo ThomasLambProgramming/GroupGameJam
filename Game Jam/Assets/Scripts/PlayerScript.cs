@@ -32,8 +32,13 @@ public class PlayerScript : MonoBehaviour
     private GameObject currentShield = null;
     private MeshRenderer currentShieldRenderer = null;
     private SphereCollider currentShieldCollider = null;
+
+    public GameObject invincibleStopper = null;
+    private SphereCollider invincibleCollider = null;
+
     void Start()
     {
+        invincibleCollider = invincibleStopper.GetComponent<SphereCollider>();
         currentShield = BlueShield;
         generatorSound = GetComponent<AudioSource>();
         playerRb = GetComponent<Rigidbody>();
@@ -70,6 +75,7 @@ public class PlayerScript : MonoBehaviour
             }
             if (invincibleTimer >= invincibleLength)
             {
+                invincibleCollider.enabled = false;
                 currentShieldCollider.enabled = true;
                 currentlyInvincible = false;
                 invincibleTimer = 0;
@@ -106,7 +112,7 @@ public class PlayerScript : MonoBehaviour
         {
             if (!currentlyInvincible)
             {
-                
+                invincibleCollider.enabled = true;
                 playerHealth--;
                 if (playerHealth == 2)
                 {
