@@ -16,7 +16,7 @@ public class PlayerScript : MonoBehaviour
 
     public float invincibleLength = 1;
     public float invincibleFlickerRate = 0.3f;
-    
+    public float shieldSpinSpeed = 10f;
     private float flickerTimer = 0;
     private float invincibleTimer = 0;
     private bool currentlyInvincible = false;
@@ -25,12 +25,22 @@ public class PlayerScript : MonoBehaviour
     private MeshRenderer playerRenderer = null;
     private GamestateManager gameManager = null;
     private AudioSource generatorSound = null;
+
+    public GameObject BlueShield = null;
+    public GameObject OrangeShield = null;
+    public GameObject RedShield = null;
+    private GameObject currentShield = null;
+    private MeshRenderer currentShieldRenderer = null;
+    private SphereCollider currentShieldCollider = null;
     void Start()
     {
+        currentShield = BlueShield;
         generatorSound = GetComponent<AudioSource>();
         playerRb = GetComponent<Rigidbody>();
         playerRenderer = GetComponent<MeshRenderer>();
         gameManager = FindObjectOfType<GamestateManager>();
+        currentShieldRenderer = currentShield.GetComponent<MeshRenderer>();
+        currentShieldCollider = currentShield.GetComponent<SphereCollider>();
     }
     public bool PlayerCharged() => chargeAmount > chargeNeeded ? true : false;
     public void ChargeUsed()
@@ -41,10 +51,11 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float spinAmount = shieldSpinSpeed * Time.deltaTime;
+        currentShield.transform.Rotate(new Vector3(spinAmount, spinAmount, spinAmount));
         if (playerHealth <= 0)
         {
             //Game over
-            transform.position = new Vector3(0, 6, 0);
             gameManager.PlayerDead();
         }
         if (currentlyInvincible)
@@ -54,13 +65,16 @@ public class PlayerScript : MonoBehaviour
             if (flickerTimer > invincibleFlickerRate)
             {
                 playerRenderer.enabled = !playerRenderer.enabled;
+                currentShieldRenderer.enabled = !currentShieldRenderer.enabled;
                 flickerTimer = 0;
             }
             if (invincibleTimer >= invincibleLength)
             {
+                currentShieldCollider.enabled = true;
                 currentlyInvincible = false;
                 invincibleTimer = 0;
                 playerRenderer.enabled = true;
+                currentShieldRenderer.enabled = true;
                 flickerTimer = 0;
             }
         }
@@ -92,7 +106,27 @@ public class PlayerScript : MonoBehaviour
         {
             if (!currentlyInvincible)
             {
+                
                 playerHealth--;
+                if (playerHealth == 2)
+                {
+                    //orange
+                    OrangeShield.SetActive(true);
+                    currentShield = OrangeShield;
+                    BlueShield.SetActive(false);
+                    currentShieldRenderer = currentShield.GetComponent<MeshRenderer>();
+                    currentShieldCollider = currentShield.GetComponent<SphereCollider>();
+                }
+                if (playerHealth == 1)
+                {
+                    RedShield.SetActive(true);
+                    currentShield = RedShield;
+                    OrangeShield.SetActive(false);
+                    currentShieldRenderer = currentShield.GetComponent<MeshRenderer>();
+                    currentShieldCollider = currentShield.GetComponent<SphereCollider>();
+                }
+                //disable so its not doing collisions when invincible because of how big it is
+                currentShieldCollider.enabled = false;
                 //playerHitParticle.Play();
                 if (playerHealth > 0)
                     currentlyInvincible = true;

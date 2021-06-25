@@ -155,7 +155,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: 4b09f07e1d235f940aa28e9df8a9bd16, type: 3}
+  - {fileID: 2100000, guid: 1bbb0da88631112459e1ae7c0c999b58, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -194,6 +194,7 @@ MonoBehaviour:
   onTimer: 2
   middlePointOfVertical: {x: 7.5, y: 0, z: 0}
   middlePointOfHorizontal: {x: 0, y: 0, z: -7.5}
+  enemyExplosion: {fileID: 6455434158754906558, guid: dc00db8f443ad49419b3cfaee495f2ab, type: 3}
 --- !u!65 &3644707244760425902
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -20,12 +20,18 @@ public class Generator : MonoBehaviour
     private PlayerScript player = null;
     private EnemySpawner spawner = null;
     private Light chargeLight = null;
+
+    [SerializeField] GameObject enemyExplosion = null;
     public void Start()
     {
         chargeLight = GetComponentInChildren<Light>();
         player = FindObjectOfType<PlayerScript>();
         spawner = FindObjectOfType<EnemySpawner>();
         gameManager = FindObjectOfType<GamestateManager>();
+    }
+    public void TurnLightOff()
+    {
+        chargeLight.enabled = false;
     }
     public void SwitchUsed()
     {
@@ -64,6 +70,9 @@ public class Generator : MonoBehaviour
             {
                 if (collider.CompareTag("Enemy"))
                 {
+                    GameObject explodeboi = Instantiate(enemyExplosion, spawner.transform);
+                    explodeboi.transform.position = collider.transform.position;
+                    Destroy(explodeboi, 2);
                     Destroy(collider.gameObject);
                     //check for delay and etc on how we want to have enemies explode
                     //enemyGeneratorDeath.Play();
@@ -83,7 +92,7 @@ public class Generator : MonoBehaviour
                 isOn = true;
                 spawner.GeneratorOn();
                 player.ChargeUsed();
-                chargeLight.enabled = false;
+                gameManager.LightsOff();
             }
         }
     }

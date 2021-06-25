@@ -32,7 +32,11 @@ public class GamestateManager : MonoBehaviour
 
     public bool testMove = false;
     private bool horizontal = true;
-    
+
+    private Generator gen1 = null;
+    private Generator gen2 = null;
+
+
     public void FlipWallAxis()
     {
         horizontal = !horizontal;
@@ -44,11 +48,17 @@ public class GamestateManager : MonoBehaviour
     }
     //Gonna be honest i didnt know you could => a variable for a return
     public bool isHorizontal() => horizontal;
-
+    public void LightsOff()
+    {
+        gen1.TurnLightOff();
+        gen2.TurnLightOff();
+    }
     void Start()
     {
         highScorePath = Application.dataPath + "Highscores.json";
-        
+        Generator[] gens = FindObjectsOfType<Generator>();
+        gen1 = gens[0];
+        gen2 = gens[1];
     }
 
     // Update is called once per frame
