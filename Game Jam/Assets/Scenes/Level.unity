@@ -2862,7 +2862,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 7670376604701524665, guid: dc31a4c8860560b42827957cfa093ed8, type: 3}
   enemyMoveSpeed: 7
-  enemySpawnSpeed: 1.2
+  enemySpawnSpeed: 1
   ySpawnHeight: 1.4
   minMoveLocation: {x: -7, y: 0, z: -7}
   maxMoveLocation: {x: 7, y: 0, z: 7}

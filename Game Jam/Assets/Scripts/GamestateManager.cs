@@ -72,7 +72,7 @@ public class GamestateManager : MonoBehaviour
         else
         {
             playerScore += Time.deltaTime * scoreTimeMultiplier;
-            scoreText.text = "Score: " + Mathf.CeilToInt(playerScore);
+           
         }
     }
 
@@ -110,7 +110,10 @@ public class GamestateManager : MonoBehaviour
         }
         return null;
     }
-
+    private void FixedUpdate()
+    {
+        scoreText.text = "Score  :  " + Mathf.CeilToInt(playerScore);
+    }
     public void PlayerDead()
     {
         gameOver = true;
