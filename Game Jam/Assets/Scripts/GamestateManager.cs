@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class GamestateManager : MonoBehaviour
 {
     
@@ -29,7 +29,8 @@ public class GamestateManager : MonoBehaviour
     private Generator gen1 = null;
     private Generator gen2 = null;
 
-
+    public GameObject textObject = null;
+    private Text scoreText = null;
     public void FlipWallAxis()
     {
         horizontal = !horizontal;
@@ -48,6 +49,7 @@ public class GamestateManager : MonoBehaviour
     }
     void Start()
     {
+        scoreText = textObject.GetComponent<Text>();
         highScorePath = Application.dataPath + "Highscores.json";
         Generator[] gens = FindObjectsOfType<Generator>();
         gen1 = gens[0];
@@ -68,7 +70,10 @@ public class GamestateManager : MonoBehaviour
             ScoreCheck();
         }
         else
+        {
             playerScore += Time.deltaTime * scoreTimeMultiplier;
+            scoreText.text = "Score: " + Mathf.CeilToInt(playerScore);
+        }
     }
 
     private void ScoreCheck()

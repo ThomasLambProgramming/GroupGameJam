@@ -11,6 +11,6 @@ public class ScoreMenu : MonoBehaviour
     {
         var score = GamestateManager.ReadHighScore();
         scoreTextt = ScoreText.GetComponent<Text>();
-        scoreTextt.text = score.score.ToString();
+        scoreTextt.text = "HIGH SCORE: " + Mathf.CeilToInt(score.score).ToString();
     }
 }
